@@ -247,4 +247,26 @@ r1.area = r1.width * r1.height
 r1.border = r1.width + r1.height
 print(r1)
 
-//
+// 연산자
+let (x1, y1) = (1, "KIM")
+print(x1)
+
+// 사칙연산자
+// 나누기는 똑같은 기호인데 나누는 숫자 타입에 따라 결과 타입이 달라짐
+// 정수 / 정수 = 정수만 나옴!
+print(10 / 3)
+// 실수 / 실수 = 실수로 나옴!
+print(10.0 / 3.0)
+print(10 % 3)
+// print(10.0 % 3.0) 실수는 나머지가 없기 때문에 계산 불가능!
+
+// 단항 음수 연산자
+let one = 1
+let minusOne = -one
+print(minusOne)
+
+var str2: String?
+str2 = "name"
+print(type(of: str2)) // nil 가능
+print(type(of: str2!)) // nil 안됨
+
