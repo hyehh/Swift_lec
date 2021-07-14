@@ -154,3 +154,97 @@ print("크기: \(size)")
 print("무게: \(weight)")
 print("가방: \(bag)")
 print("색상: \(color)")
+
+//문자열 수정
+var variableString = "Horse"
+variableString += " and carriage"
+print(variableString)
+
+var string1 = "hello"
+var string2 = " there"
+var welcome = string1 + string2
+print(welcome)
+
+// 변수 데이터를 바꾸려면 + 보다 append가 좋음!
+string1.append(string2) // string1 자체에 글자 첨부하기
+print(string1)
+
+// 문자 길이
+let str = "12345,67890"
+print("str has \(str.count) characters")
+
+// 중괄호 써도 되고 안써도 되고!
+if str.count == 0{
+    print("Data가 없습니다.")
+}else{
+    print("Data는 \(str)입니다.")
+}
+
+// Any, nil (스위프트에서 null을 nil이라고 생각하면 됨)
+/*
+ Any : Swift의 모든 타입을 지칭하는 키워드 (별로 권장 x)
+ nil : null, Null, None (스위프트에서 null을 nil이라고 생각하면 됨)
+ */
+// Any 타입 작성 시 꼭 타입에 Any 라고 적어줘야 함!
+var someAny: Any = 100
+someAny = "Type"
+print(someAny)
+someAny = 132.12 // 실수든 문자든 정수든 아무 상관 없음
+print(someAny)
+
+var someDouble1: Double = 111.1
+// 같은 Double이 아님! Any 타입은 Any끼리만 사칙연산 가능! (그렇기에 Any 사용 지양)
+// print(someAny + someDouble1)
+// 타입을 Double로 변환시키면 가능 (타입 변환 시, type() 으로 변환되지 않는 경우 as! 사용)
+// print(type(of: someAny) + someDouble1)
+print(someAny as! Double + someDouble1)
+
+/*
+ Optional Value (Null Safety)
+ String 뒤에 ? 적지 않으면 nil 값 사용 불가능!
+ ?는 정의할 때 !는 그 내용을 풀 때 사용
+ 
+ var someNil: String
+ someNil = nil
+ */
+var someNil: String?
+someNil = nil
+
+// Tuple
+// Tuple 사용 전
+var dialCode = 82
+var isoCode = "KR"
+var countryName = "Korea"
+
+// , 는 한 칸씩 띄어서 출력
+print(dialCode, isoCode, countryName)
+
+// Tuple 사용
+var country = (82, "KR", "Korea")
+// Tuple 모양대로 출력
+print(country)
+// country 출력 시 () "" 없이 출력하고 싶은 경우!
+print(country.0, country.1, country.2)
+
+// 이름을 주게 되면 Dictionary처럼 key와 value 값이 들어간다!
+var country1 = (dialCode1: 82, isoCode1: "KR", countryName1: "Korea")
+print(country1.dialCode1, country1.isoCode1, country1.countryName1)
+
+// Type 별칭
+typealias MyInt = Int
+// 나만의 타입을 만든 것임
+let age2: MyInt = 20
+// Tuple 할 때 많이 사용
+typealias person = (name: String, height: Int, marriage: Bool)
+
+var p1: person = ("유비", 180, true)
+print(p1.name)
+
+// Tuple을 사용하여 직사각형의 넓이와 둘레를 출력
+typealias Rectangle = (name: String, width: Int, height: Int, area: Int, border: Int)
+var r1: Rectangle = ("직사각형", 5, 6, 0, 0)
+r1.area = r1.width * r1.height
+r1.border = r1.width + r1.height
+print(r1)
+
+//

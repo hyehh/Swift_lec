@@ -39,12 +39,13 @@ class ViewController: UIViewController {
     } // btnOK
     
     @IBAction func btnClear(_ sender: UIButton) {
-        tfName.text = ""
+        // tfName.text = "" 이것도 가능하나 removeAll 사용도 가능!
+        tfName.text?.removeAll()
         // String으로 타입 변환하여 사용해야 함! text가 String 이기 때문!
-        tfSize.text = ""
-        tfWeight.text = ""
-        tfBag.text = ""
-        tfColor.text = ""
+        tfSize.text?.removeAll()
+        tfWeight.text?.removeAll()
+        tfBag.text?.removeAll()
+        tfColor.text?.removeAll()
     } // btnClear
     
 } // ViewController
