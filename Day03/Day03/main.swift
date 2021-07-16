@@ -204,3 +204,108 @@ for i in 0..<score.count{
         break
     }
 }
+
+// 반복문
+let names = ["Anna", "Alex", "Brian", "Jack"]
+// 문자의 경우 이런 방식으로 사용하지 않음
+for i in 0..<name.count{
+    print((names[i]))
+}
+// 이 방법 사용
+for name in names{
+    print(name)
+}
+
+// Dictionary 반복문 (Dictionary 순서가 없다!)
+let numberOfLegs = ["Spider" : 8, "Ant" : 6, "Cat" : 4]
+// Tuple 사용
+for (animalName, legCount) in numberOfLegs{
+    print("\(animalName) have \(legCount) legs")
+}
+
+let seq1 = 1...5
+for i in seq1{
+    print("\(i) * 5 = \(i*5)")
+}
+// let seq1 = 5...1 // 이렇게 사용 불가능!! 초기값이 작은 값으로 시작해야 함!
+for i in seq1.reversed(){ // seq1 순서 반대로 시작
+    print("\(i) * 5 = \(i*5)")
+}
+
+let minutes = 60
+let hourInterval = 5
+// stride 함수 사용 : 0부터 minutes까지 증가치는 hourInterval
+// 60이 안나옴
+for tickMark in stride(from: 0, to: minutes, by: hourInterval){
+    print(tickMark)
+}
+// 60까지 나옴
+for tickMark in stride(from: 0, through: minutes, by: hourInterval){
+    print(tickMark)
+}
+
+for tickMark in stride(from: 0, to: minutes, by: hourInterval).reversed(){
+    print(tickMark)
+}
+
+for tickMark in stride(from: 0, through: minutes, by: hourInterval).reversed(){
+    print(tickMark)
+}
+
+// while
+var startIndex = 0
+var endIndex = 100
+var sum = 0
+
+// 0부터 100까지의 합
+while startIndex <= endIndex{
+    sum += startIndex
+    startIndex += 1
+}
+print(sum)
+
+// 1부터 100까지의 짝수의 합 (단, if문 사용 금지)
+var startNum = 0
+var endNum = 100
+var total = 0
+
+while startNum <= endNum{
+    total += startNum
+    startNum += 2
+}
+print(total)
+
+// 입력한 한 자릿수의 정수의 합 구하기
+// terminator 옆에다 주는 것 (end 같은 역할)
+print("Enter an integer(0~9):", terminator: " ")
+// readLine 값은 옵셔널임!
+var number = Int(readLine()!)
+var intNumber = number!
+var sumOfDigits = 0
+
+while intNumber > 0 {
+    sumOfDigits += intNumber % 10
+    intNumber = intNumber / 10
+}
+print("Sum of digits =", sumOfDigits)
+
+print("Enter an integer(0~9):", terminator: " ")
+var repNum = 0
+var remainder = 0
+var sumNo = 0
+
+// _ : 문법상에 의해 변수는 잡아놓았지만 사용하지 않을 경우 _ 사용
+var inputNum = Int(readLine()!)
+if let _: Int = inputNum{
+    // repNum = i 쓰고 위에 _아닌 i 주는 것도 가능!
+    repNum = inputNum!
+    while repNum != 0 {
+        remainder = repNum % 10
+        sumNo += remainder
+        repNum /= 10
+    }
+    print("Sum of digits = \(sumNo)")
+}else{
+    // nil 값이거나 문자 넣은 경우
+    print("Input value is wrong!")
+}

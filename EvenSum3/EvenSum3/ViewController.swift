@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  EvenSum2
+//  EvenSum3
 //
 //  Created by Hyeji on 2021/07/16.
 //
@@ -19,23 +19,17 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         lblResult.text = "1번 숫자와 2번 숫자에 짝수를 입력해주세요!"
         tfResult.isUserInteractionEnabled = false
+        tfFirstNum.becomeFirstResponder()
     }
-  
-    // 키보드 내리기
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
+
     @IBAction func btnCalc(_ sender: UIButton) {
         self.view.endEditing(true)
-
-        guard let intFirstNum = Int(tfFirstNum.text!) else {
-            lblResult.text = "1번 숫자에 짝수를 입력해주세요!"
-            return }
-        
-        guard let intSecondNum = Int(tfSecondNum.text!) else {
-            lblResult.text = "2번 숫자에 짝수를 입력해주세요!"
-            return }
+        let intFirstNum = Int(tfFirstNum.text!) ?? 0
+        let intSecondNum = Int(tfSecondNum.text!) ?? 0
         
         let result = checkEven(intFirstNum, intSecondNum)
         

@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         lblResult.text = "1번 숫자와 2번 숫자에 짝수를 입력해주세요!"
+        tfFirstNum.becomeFirstResponder()
         tfResult.isUserInteractionEnabled = false
     } // viewDidLoad
 
@@ -40,8 +41,10 @@ class ViewController: UIViewController {
         
         if strFisrtNum.isEmpty == true{
             lblResult.text = "1번 숫자에 짝수를 입력해주세요!"
+            tfFirstNum.becomeFirstResponder()
         }else if strSecondNum.isEmpty == true{
             lblResult.text = "2번 숫자에 짝수를 입력해주세요!"
+            tfSecondNum.becomeFirstResponder()
         }else{
             guard let intFirstNum = Int(strFisrtNum) else { return }
             guard let intSecondNum = Int(strSecondNum) else { return }
@@ -50,8 +53,10 @@ class ViewController: UIViewController {
             
             if result == 1{
                 lblResult.text = "1번 숫자에 짝수를 입력해주세요!"
+                tfFirstNum.becomeFirstResponder()
             }else if result == 2{
                 lblResult.text = "2번 숫자에 짝수를 입력해주세요!"
+                tfSecondNum.becomeFirstResponder()
             }else{
                 sum(intFirstNum, intSecondNum)
             }
