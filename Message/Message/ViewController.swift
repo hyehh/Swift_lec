@@ -20,10 +20,18 @@ class ViewController: UIViewController {
     } // viewDidLoad
 
     @IBAction func btnSend(_ sender: UIButton) {
+        tvMessage.text += tfMessage.text! + "\n"
+        self.view.endEditing(true)
     } // btnSend
     
     @IBAction func btnEmoji(_ sender: UIButton) {
+        tfMessage.text! += emoji
+        self.view.endEditing(true)
     } // btnEmoji
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
 } // ViewController
 

@@ -126,3 +126,51 @@ func shape(_ bottom: Int, _ height: Int, _ bevel: Int){
 }
 
 shape(2, 3, 4)
+
+/*
+ Class : 전통적인 OOP (object oriented programming)관점에서의 클래스 - 이 구조는 Swift에서도 동일
+ - 단일 상속
+ - property
+ - constructor
+ - method // 스위프트에서는 function
+ - 참조 타입 선언(Call by reference)
+ 
+ Struct (상속을 할 수 없는 Class)
+ - 상속 불가
+ - property
+ - constructor
+ - method // 스위프트에서는 function
+ - 값 타입 선언(Call by value)
+ */
+
+// Class 와 Struct 의 비교
+struct ValueType { // 이름 대문자로 시작!
+    var property = 1
+}
+
+class ReferenceType { // 이름 대문자로 시작!
+    var property = 1
+}
+
+// class이름 object이름 = new Constructor : Swift에서는 여기에서 new 만 안쓰면 됨!
+
+// struct는 복제하고 써도 아무상관 없으나 class는 복제하고 쓰면 같은 값을 가지게 된다!
+
+let firstStructInstance: ValueType = ValueType()
+// let firstStructInstance = ValueType() 이렇게 써도 됨!
+var secondStructInstance = firstStructInstance // 쌍둥이 만들어도 value값은 다르게 가짐 (이란성 쌍둥이라고 생각)
+secondStructInstance.property = 2
+
+// 값은 다 다르게 가지고 있음!
+print("first : \(firstStructInstance.property)")
+print("second : \(secondStructInstance.property)")
+
+let firstClassInstance: ReferenceType = ReferenceType()
+// let firstClassInstance = ReferenceType()
+var secondClassInstance = firstClassInstance // 쌍둥이 만들면 value값은 같은 값을 가짐 (일란성 쌍둥이라고 생각)
+secondClassInstance.property = 2
+
+// 같이 값이 바뀌어버림!
+print("first : \(firstClassInstance.property)")
+print("second : \(secondClassInstance.property)")
+
