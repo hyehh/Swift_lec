@@ -247,3 +247,33 @@ print(1.isOdd)
 // extension과 클라스를 연결시켜주는 게 delegate
 // extension은 클라스 밖에서 사용하는 것! 그래서 연결이 필요함
 
+// Closure : 함수인데 이름이 없는 함수 (python의 lambda함수)
+// ios 에서는 딱 한 군데에서만 사용 : alert message 만들 때만 사용!
+func sumFunction(a: Int, b: Int) -> Int{
+    return a + b
+}
+
+var sumResult: Int = sumFunction(a: 10, b: 20)
+print(sumResult)
+
+// Closure
+//              타입정의               이 부분은 원래 function과 동일
+var sumClosure: (Int, Int) -> Int = {(a: Int, b: Int) -> Int in // in 앞에 적어준다는 것 기억!
+    return a + b
+}
+
+sumResult = sumClosure(10, 20)
+print(sumResult)
+
+// Random
+// in 뒤에는 범위
+print(Int.random(in: 1..<10))
+print(Int.random(in: 1..<10))
+
+func genNum() -> String{
+    return String(Int.random(in: 1..<10))
+}
+
+print(genNum())
+print(genNum())
+
