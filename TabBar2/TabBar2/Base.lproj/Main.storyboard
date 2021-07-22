@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="meA-WK-kZp">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TabBar2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image 보기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xA9-FP-N11">
+                                <rect key="frame" x="20" y="174" width="374" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtx-gC-rIs">
+                                <rect key="frame" x="20" y="326" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="버튼으로 선택하기"/>
+                                <connections>
+                                    <action selector="btnGoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ckY-M1-HWZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8G-GZ-Xrg">
+                                <rect key="frame" x="20" y="526" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Page Control로 선택하기"/>
+                                <connections>
+                                    <action selector="btnGoPageControl:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KIE-wK-4El"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwG-wq-WxW">
+                                <rect key="frame" x="20" y="431" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="타이머로 선택하기"/>
+                                <connections>
+                                    <action selector="btnGoTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wop-d2-L2P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x8G-GZ-Xrg" secondAttribute="bottom" constant="253" id="5uu-qg-ZUm"/>
+                            <constraint firstItem="TwG-wq-WxW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IRv-L9-t6b"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x8G-GZ-Xrg" secondAttribute="trailing" constant="20" id="Kgd-gE-ZyH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TwG-wq-WxW" secondAttribute="trailing" constant="20" id="NjK-Eh-SR4"/>
+                            <constraint firstItem="xA9-FP-N11" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="130" id="SQd-G3-rCA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xA9-FP-N11" secondAttribute="trailing" constant="20" id="fhD-J3-s8f"/>
+                            <constraint firstItem="x8G-GZ-Xrg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="gZp-xW-fDX"/>
+                            <constraint firstItem="xA9-FP-N11" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hwc-yu-Xyr"/>
+                            <constraint firstItem="x8G-GZ-Xrg" firstAttribute="top" secondItem="TwG-wq-WxW" secondAttribute="bottom" constant="59" id="qnl-2R-4F9"/>
+                            <constraint firstItem="TwG-wq-WxW" firstAttribute="top" secondItem="qtx-gC-rIs" secondAttribute="bottom" constant="73" id="rdW-D2-v7R"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qtx-gC-rIs" secondAttribute="trailing" constant="20" id="rgm-oy-UgD"/>
+                            <constraint firstItem="qtx-gC-rIs" firstAttribute="top" secondItem="xA9-FP-N11" secondAttribute="bottom" constant="123" id="soP-Fp-yvF"/>
+                            <constraint firstItem="qtx-gC-rIs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="u0p-QO-n9p"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="qMh-T5-o7P"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="954" y="-394"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="P5u-tY-3cM">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="meA-WK-kZp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FBh-0W-c0W">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="gVa-eD-9WM"/>
+                        <segue destination="k2C-s3-J8a" kind="relationship" relationship="viewControllers" id="07S-8i-qeG"/>
+                        <segue destination="Z1c-Bk-66G" kind="relationship" relationship="viewControllers" id="Xac-qx-Y4w"/>
+                        <segue destination="KGj-Sb-2O7" kind="relationship" relationship="viewControllers" id="2Jk-5r-yIn"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dbW-oZ-9R0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-358" y="71"/>
+        </scene>
+        <!--Button View Controller-->
+        <scene sceneID="bW7-cb-i4a">
+            <objects>
+                <viewController id="k2C-s3-J8a" customClass="ButtonViewController" customModule="TabBar2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gqA-N9-0kG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2h-Z8-aZz">
+                                <rect key="frame" x="20" y="83" width="374" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pMw-5h-Flp">
+                                <rect key="frame" x="20" y="155" width="374" height="533"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyP-7w-VfD">
+                                <rect key="frame" x="81" y="733" width="99" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="이전"/>
+                                <connections>
+                                    <action selector="btnPreview:" destination="k2C-s3-J8a" eventType="touchUpInside" id="IXW-VW-ohZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1M-Ik-x1H">
+                                <rect key="frame" x="235" y="733" width="99" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="다음"/>
+                                <connections>
+                                    <action selector="btnNext:" destination="k2C-s3-J8a" eventType="touchUpInside" id="ME2-XS-flb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zlh-rH-FFw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="downloads" id="Kyk-Zt-HYx"/>
+                    <connections>
+                        <outlet property="imgView" destination="pMw-5h-Flp" id="NN0-39-YBV"/>
+                        <outlet property="lblName" destination="f2h-Z8-aZz" id="KjX-bP-VXN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yDw-ca-VUJ" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1945" y="-58"/>
+        </scene>
+        <!--Page Control View Controller-->
+        <scene sceneID="vwa-xu-s7X">
+            <objects>
+                <viewController id="KGj-Sb-2O7" customClass="PageControlViewController" customModule="TabBar2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KHD-zh-0n7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l3u-7n-Fe8">
+                                <rect key="frame" x="20" y="44" width="374" height="717"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="cd5-37-Yen">
+                                <rect key="frame" x="20" y="733" width="374" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="pageChange:" destination="KGj-Sb-2O7" eventType="valueChanged" id="XyR-wE-fYm"/>
+                                </connections>
+                            </pageControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Jzz-cx-siS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="v8h-SQ-j7J"/>
+                    <connections>
+                        <outlet property="imgView" destination="l3u-7n-Fe8" id="v1z-rF-wI7"/>
+                        <outlet property="pageControl" destination="cd5-37-Yen" id="FHd-gP-nQi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l89-ky-DST" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="441" y="825"/>
+        </scene>
+        <!--Timer View Controller-->
+        <scene sceneID="1p7-HC-ycs">
+            <objects>
+                <viewController id="Z1c-Bk-66G" customClass="TimerViewController" customModule="TabBar2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rf4-ch-F4g">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3초마다 이미지 변경 무한 반복" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgS-e9-jwx">
+                                <rect key="frame" x="20" y="118" width="374" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdi-oj-Hcf">
+                                <rect key="frame" x="20" y="206" width="374" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1it-8B-OGO">
+                                <rect key="frame" x="20" y="305" width="374" height="475"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CS4-M2-YHW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="FQy-oh-Ojg"/>
+                    <connections>
+                        <outlet property="imgView" destination="1it-8B-OGO" id="CUm-6P-9t1"/>
+                        <outlet property="lblName" destination="Bdi-oj-Hcf" id="sjI-XW-Mkz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bo6-O6-HwA" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1268" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

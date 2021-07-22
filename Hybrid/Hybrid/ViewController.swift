@@ -48,6 +48,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btnHtml(_ sender: UIButton) {
+        // 서버에 있는 이미지를 가져오고 싶을 때 & 프로튼엔드와 연결해주고 싶을 때
         // 변수에 html 파일을 넣을것임!
         // .load 메소드 사용불가!
         let htmlString = """
@@ -85,13 +86,24 @@ class ViewController: UIViewController {
     
     // 사용자 입력값에 https:// 있는지 체크
     func checkUrl(_ url: String) -> String{
+        
         var strUrl = url
-        let flag = strUrl.hasPrefix("http://") // Prefix : 앞글자 - Postfix : 뒷글자
-        if !flag{
-            strUrl = "http://" + strUrl
+        let strUrlSubString = strUrl.index(strUrl.startIndex, offsetBy: 7)
+        let flag = String(strUrl[...strUrlSubString])
+        print(flag)
+        if flag != "https://" {
+            strUrl = "https://" + strUrl
         }
         print(strUrl)
         return strUrl
+        
+//        var strUrl = url
+//        let flag = strUrl.hasPrefix("http://") // Prefix : 앞글자 - Postfix : 뒷글자
+//        if !flag{
+//            strUrl = "http://" + strUrl
+//        }
+//        print(strUrl)
+//        return strUrl
     }
     
     @IBAction func btnStop(_ sender: UIBarButtonItem) {

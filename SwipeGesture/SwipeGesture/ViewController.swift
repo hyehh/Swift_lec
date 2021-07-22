@@ -60,6 +60,7 @@ class ViewController: UIViewController {
     func makeSingleTouch() {
         // UISwipeGestureRecognizer : swipe gesture 인식하는 함수
         // action은 selector들어가야 함
+        // (_:) 기계가 주는 것이기 때문에 변수를 줄 수 없음
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.respondToSwipeGesture(_:)))
         swipeUp.direction = UISwipeGestureRecognizer.Direction.up
         self.view.addGestureRecognizer(swipeUp)
@@ -83,7 +84,7 @@ class ViewController: UIViewController {
     @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
         // nil data 생길 수 있기 때문에 if let 사용
         // nil data가 생기는 경우 : 대각선으로 할 경우 한 방향으로 특정하기 어렵기 때문에 nil data 가 생길 수 있음
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer{
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer{ // UIGestureRecognizer를 UISwipeGestureRecognizer로 변환시켰을 때 nil 존재가능하기 때문에 as?
             // 초기값 설정 (시작할 때는 다 검정이어야 함)
             imgViewUp.image = imgUp[0]
             imgViewDown.image = imgDown[0]
