@@ -1,29 +1,33 @@
 //
 //  DetailViewController.swift
-//  Table
+//  Table2
 //
-//  Created by Hyeji on 2021/07/22.
+//  Created by 박성훈 on 2021/07/23.
 //
 
 import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var lblItem: UILabel!
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var lblDetail: UILabel!
     
-    var receiveItem = ""
+    var img = ""
+    var detail = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        lblItem.text = receiveItem
+        lblDetail.text = detail
+        imgView.image = UIImage(named: img)
     }
     
-    // 함수를 통해서 받기 (변수를 통해서 받는 것도 할 수 있으나 함수를 통해서 받을 수도 있음!)
-    func receiverItems(_ item: String) {
-        receiveItem = item // item은 ViewController가 보내준 정보
+    func receviedData(_ receviedDetail: String, _ receivedImage: String) {
+        detail = receviedDetail
+        img = receivedImage
     }
+    
 
     /*
     // MARK: - Navigation
@@ -35,4 +39,4 @@ class DetailViewController: UIViewController {
     }
     */
 
-} // DetailViewController
+}

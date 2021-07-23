@@ -63,9 +63,16 @@ extension ViewController: UIPickerViewDataSource{
 // picker view에 데이터 넣기 & 출력
 extension ViewController: UIPickerViewDelegate{
     
-    // picker view에 title 입히기(데이터 넣기) - titleForRow 기억!!!
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return imageFileName[row] // row 사용 시 for문 안돌려도 사용가능!
+//    // picker view에 title 입히기(데이터 넣기) - titleForRow 기억!!!
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return imageFileName[row] // row 사용 시 for문 안돌려도 사용가능!
+//    }
+    
+    // Picker View에 썸네일 배치 (그림 띄우기)
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let imageView = UIImageView(image: imageArray[row])
+        imageView.frame = CGRect(x: 0, y: 0, width: 50, height: 20)
+        return imageView
     }
     
     // picker view에 Image 선택한 경우 출력 - didSelectRow 기억!!!
