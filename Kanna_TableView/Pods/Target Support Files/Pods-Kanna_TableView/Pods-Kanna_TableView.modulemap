@@ -1,0 +1,6 @@
+framework module Pods_Kanna_TableView {
+  umbrella header "Pods-Kanna_TableView-umbrella.h"
+
+  export *
+  module * { export * }
+}
