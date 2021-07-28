@@ -1,27 +1,29 @@
 //
 //  TableViewController.swift
-//  ServerJson_01
+//  ServerJson_02
 //
-//  Created by Hyeji on 2021/07/27.
+//  Created by Hyeji on 2021/07/28.
 //
 
 import UIKit
 
 class TableViewController: UITableViewController {
 
+    // Storage : strong / weak
+    // 종료하지 않고 다른 거 보면 없어지는 data - weak
+    // 앱을 종료해야 없어지는 data - strong
     @IBOutlet var listTableView: UITableView!
-    // NSArray 사용하는 이유는 String과 Int를 같이 사용할 수 있기 때문
-    // NSArray 배열 중에 가장 큰 배열임!
     var feedItem: NSArray = NSArray() // NSMutableArray 가능!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // instance 만들기 (new 글자만 없지 자바에서 했던 작업과 동일)
         let jsonModel = JsonModel()
-        jsonModel.delegate = self
+        jsonModel.delegate = self // 여기 self 통해서 데이터가 들어온다!
         // downloadItems - items 만들어줌!
         jsonModel.downloadItems() // JsonModel의 downloadItems 함수 실행
+        
+        // cell 크기 정의
+        listTableView.rowHeight = 124
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,28 +34,29 @@ class TableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    // reloadData 시 작동
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
+    // reloadData 시 작동
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return feedItem.count
     }
 
-    
+    // reloadData 시 작동
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // UITableViewCell 안만들고 default 된 거 사용한 것임! UITableViewCell default 값이라 사용 가능!
-        // 처음부터 recycler view임!! swift에서 list view는 recycler view다!
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! TableViewCell
 
         // Configure the cell...
-        // DBModel로 바꿔줘야 item.sname 뽑아서 사용 가능
         let item: DBModel = feedItem[indexPath.row] as! DBModel
         
-        cell.textLabel?.text = "성명 : \(item.sname!)"
-        cell.detailTextLabel?.text = "학번 : \(item.scode!)"
+        cell.lblCode.text = "학번 : \(item.scode!)"
+        cell.lblName.text = "성명 : \(item.sname!)"
+        cell.lblDept.text = "전공 : \(item.sdept!)"
+        cell.lblPhone.text = "전화번호 : \(item.sphone!)"
 
         return cell
     }

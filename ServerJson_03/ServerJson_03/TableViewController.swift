@@ -1,8 +1,8 @@
 //
 //  TableViewController.swift
-//  ServerJson_01
+//  ServerJson_03
 //
-//  Created by Hyeji on 2021/07/27.
+//  Created by Hyeji on 2021/07/28.
 //
 
 import UIKit
@@ -10,19 +10,17 @@ import UIKit
 class TableViewController: UITableViewController {
 
     @IBOutlet var listTableView: UITableView!
-    // NSArray 사용하는 이유는 String과 Int를 같이 사용할 수 있기 때문
-    // NSArray 배열 중에 가장 큰 배열임!
     var feedItem: NSArray = NSArray() // NSMutableArray 가능!
-
+    var serverImage: UIImage? = UIImage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // instance 만들기 (new 글자만 없지 자바에서 했던 작업과 동일)
         let jsonModel = JsonModel()
         jsonModel.delegate = self
         // downloadItems - items 만들어줌!
         jsonModel.downloadItems() // JsonModel의 downloadItems 함수 실행
-        
+        listTableView.rowHeight = 130
+        image()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -44,20 +42,26 @@ class TableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // UITableViewCell 안만들고 default 된 거 사용한 것임! UITableViewCell default 값이라 사용 가능!
-        // 처음부터 recycler view임!! swift에서 list view는 recycler view다!
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! TableViewCell
 
         // Configure the cell...
-        // DBModel로 바꿔줘야 item.sname 뽑아서 사용 가능
         let item: DBModel = feedItem[indexPath.row] as! DBModel
+                
+        cell.imgView.image = serverImage
+        //cell.imgView.frame.width =
+        cell.imgView.layer.cornerRadius = cell.imgView.frame.height / 2
+        cell.imgView.clipsToBounds = true
+        cell.lblName.text = "성명 : \(item.sname!)"
+        cell.lblPhone.text = "전화번호 : \(item.sphone!)"
         
-        cell.textLabel?.text = "성명 : \(item.sname!)"
-        cell.detailTextLabel?.text = "학번 : \(item.scode!)"
-
         return cell
     }
     
+    func image() {
+        let url = URL(string: "http://192.168.0.92:8080/ios/pencil.png")
+        let data = try? Data(contentsOf: url!)
+        serverImage = UIImage(data: data!)
+    }
 
     /*
     // Override to support conditional editing of the table view.

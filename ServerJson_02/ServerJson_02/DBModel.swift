@@ -1,15 +1,15 @@
 //
 //  DBModel.swift
-//  ServerJson_01
+//  ServerJson_02
 //
-//  Created by Hyeji on 2021/07/27.
+//  Created by Hyeji on 2021/07/28.
 //
 
-// bean 만든다고 생각하기
 import Foundation
 
 // json이나 database 쓸 때는 type 주는 게 좋음
-class DBModel: NSObject {
+class DBModel: NSObject { // NSObject 안쓰면 비어있는 생성자를 만들 수 없음!
+    // 순서는 맞춰주기!
     var scode: String?
     var sname: String?
     var sdept: String?
@@ -27,5 +27,4 @@ class DBModel: NSObject {
         self.sdept = sdept
         self.sphone = sphone
     }
-    
 }

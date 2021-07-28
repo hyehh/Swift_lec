@@ -94,7 +94,7 @@ class TableViewController: UITableViewController {
             // return 할 께 없는데 return 적으면 그냥 이 함수에서 빠져버리는 것!
             return
         }
-        
+                
         // sqlite 실행
         if sqlite3_step(stmt) != SQLITE_DONE {
             // 실행했는데 잘 끝나지 않았으면!

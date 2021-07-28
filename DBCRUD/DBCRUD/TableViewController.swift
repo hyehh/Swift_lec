@@ -1,8 +1,8 @@
 //
 //  TableViewController.swift
-//  ServerJson_01
+//  DBCRUD
 //
-//  Created by Hyeji on 2021/07/27.
+//  Created by Hyeji on 2021/07/28.
 //
 
 import UIKit
@@ -10,24 +10,25 @@ import UIKit
 class TableViewController: UITableViewController {
 
     @IBOutlet var listTableView: UITableView!
-    // NSArray 사용하는 이유는 String과 Int를 같이 사용할 수 있기 때문
-    // NSArray 배열 중에 가장 큰 배열임!
-    var feedItem: NSArray = NSArray() // NSMutableArray 가능!
-
+    
+    var feedItem: NSMutableArray = NSMutableArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // instance 만들기 (new 글자만 없지 자바에서 했던 작업과 동일)
-        let jsonModel = JsonModel()
-        jsonModel.delegate = self
-        // downloadItems - items 만들어줌!
-        jsonModel.downloadItems() // JsonModel의 downloadItems 함수 실행
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // viewDidLoad -> viewWillAppear 실행 후 화면 등장!
+        // 입력하면 여기서 이 세 줄이 실행되어야 새로운 데이터가 업데이트 된다!
+        let queryModel = QueryModel()
+        queryModel.delegate = self
+        queryModel.downloadItems()
     }
 
     // MARK: - Table view data source
@@ -44,12 +45,9 @@ class TableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // UITableViewCell 안만들고 default 된 거 사용한 것임! UITableViewCell default 값이라 사용 가능!
-        // 처음부터 recycler view임!! swift에서 list view는 recycler view다!
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
 
         // Configure the cell...
-        // DBModel로 바꿔줘야 item.sname 뽑아서 사용 가능
         let item: DBModel = feedItem[indexPath.row] as! DBModel
         
         cell.textLabel?.text = "성명 : \(item.sname!)"
@@ -58,7 +56,6 @@ class TableViewController: UITableViewController {
         return cell
     }
     
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -67,18 +64,33 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            deleteData(indexPath.row)
+            feedItem.removeObject(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
-
+    
+    func deleteData(_ number: Int) {
+        let deleteModel = DeleteModel()
+        let item: DBModel = feedItem[number] as! DBModel
+        let scode = item.scode
+        let result = deleteModel.DeleteItems(code: scode!)
+                
+        if result{
+        }else{
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "삭제"
+    }
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -94,20 +106,28 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "sgDetail" {
+            let cell = sender as! UITableViewCell
+            let indexPath = self.listTableView.indexPath(for: cell)
+            let detailViewController = segue.destination as! DetailViewController
+            let item: DBModel = feedItem[indexPath!.row] as! DBModel
+            detailViewController.receivedData(item)
+            // detailViewController.receivedData(feedItem[indexPath!.row] as! DBModel)
+        }
     }
-    */
+    
 
 }
 
-extension TableViewController: JsonModelProtocol {
-    func itemDownloaded(items: NSArray) {
+extension TableViewController: QueryModelProtocol {
+    func itemDownloaded(items: NSMutableArray) {
         // NSArray를 쓴 이유? 사용하면 String과 Int같이 쓸 수 있기 때문!
         // 가져온 데이터를 넣어준 곳
         feedItem = items

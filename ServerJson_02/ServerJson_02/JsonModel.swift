@@ -1,11 +1,10 @@
 //
 //  JsonModel.swift
-//  ServerJson_01
+//  ServerJson_02
 //
-//  Created by Hyeji on 2021/07/27.
+//  Created by Hyeji on 2021/07/28.
 //
 
-// 불러오는 class (json data 넘겨주는 방법)
 import Foundation
 
 protocol JsonModelProtocol {
@@ -17,13 +16,12 @@ protocol JsonModelProtocol {
 class JsonModel {
     // JsonModel이 JsonModelProtocol을 가지고 있음
     var delegate: JsonModelProtocol!
-    let urlPath = "http://192.168.0.5:8080/ios/student.json"
+    let urlPath = "http://192.168.0.92:8080/ios/student.json"
     
     func downloadItems() {
         // URL 타입 생성
         let url: URL = URL(string: urlPath)!
         // Session 생성
-        // Foundation.URLSession~ 적어도 됨!
         let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
         // Task : downloadItems에서 실행되는 부분 (여기에서 데이터 가져옴)
         let task = defaultSession.dataTask(with: url){(data, response, error) in

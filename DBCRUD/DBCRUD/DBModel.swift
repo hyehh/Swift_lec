@@ -1,14 +1,12 @@
 //
 //  DBModel.swift
-//  ServerJson_01
+//  DBCRUD
 //
-//  Created by Hyeji on 2021/07/27.
+//  Created by Hyeji on 2021/07/28.
 //
 
-// bean 만든다고 생각하기
 import Foundation
 
-// json이나 database 쓸 때는 type 주는 게 좋음
 class DBModel: NSObject {
     var scode: String?
     var sname: String?

@@ -1,29 +1,28 @@
 //
-//  JsonModel.swift
-//  ServerJson_01
+//  QueryModel.swift
+//  DBCRUD
 //
-//  Created by Hyeji on 2021/07/27.
+//  Created by Hyeji on 2021/07/28.
 //
 
-// 불러오는 class (json data 넘겨주는 방법)
 import Foundation
 
-protocol JsonModelProtocol {
+// 쿼리마다 Model 따로 만들어줘야 함!
+protocol QueryModelProtocol {
     // 프로토콜이니까 함수 이름만 있음 (기능 없음)
-    func itemDownloaded(items: NSArray)
+    func itemDownloaded(items: NSMutableArray)
 }
 
 // 프로토콜과 클라스 다른 파일에서 처리해도 가능!
-class JsonModel {
+class QueryModel {
     // JsonModel이 JsonModelProtocol을 가지고 있음
-    var delegate: JsonModelProtocol!
-    let urlPath = "http://192.168.0.5:8080/ios/student.json"
+    var delegate: QueryModelProtocol!
+    let urlPath = "http://192.168.0.92:8080/ios/student_query_ios.jsp"
     
     func downloadItems() {
         // URL 타입 생성
         let url: URL = URL(string: urlPath)!
         // Session 생성
-        // Foundation.URLSession~ 적어도 됨!
         let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
         // Task : downloadItems에서 실행되는 부분 (여기에서 데이터 가져옴)
         let task = defaultSession.dataTask(with: url){(data, response, error) in
@@ -42,7 +41,7 @@ class JsonModel {
     
     // parsing func 만들기
     func parseJSON(_ data: Data) {
-        var jsonResult = NSArray()
+        var jsonResult = NSMutableArray()
         do {
             // swift에서 json 사용하는 방식
             // 변환이 쉬워서 NSArray 사용한 것! (여기서 변환시켜주려고!!!!)
@@ -51,7 +50,7 @@ class JsonModel {
             // 들어온 JSON을 배열로 바꿔줌!
             // NSArray 한 번 데이터가 들어가면 못바꿈! 못지움!
             // NSArray는 [{"code" : "S001", "name" : "aaa"},{}] 이런식으로 들어가있음!
-            jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+            jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSMutableArray
         } catch let error as NSError {
             print(error)
         }

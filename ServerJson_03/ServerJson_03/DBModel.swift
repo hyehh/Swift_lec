@@ -1,31 +1,32 @@
 //
 //  DBModel.swift
-//  ServerJson_01
+//  ServerJson_03
 //
-//  Created by Hyeji on 2021/07/27.
+//  Created by Hyeji on 2021/07/28.
 //
 
-// bean 만든다고 생각하기
 import Foundation
 
-// json이나 database 쓸 때는 type 주는 게 좋음
 class DBModel: NSObject {
+    // property
     var scode: String?
     var sname: String?
     var sdept: String?
     var sphone: String?
     
-    // Empty constructor
+    // override init() 은 NSObject에서 override한 init을 의미!
     override init() {
-        // 비어있는 생성자 형성 (필수적으로 생성하자! -> 버그 걸릴 수 있음)
+        
     }
     
+    // Json data 는 어짜피 String임! 값이 없다면 null 이라는 글자가 들어오기 때문!! 그렇기에 String? 아닌 String 사용하면 됨!
+    // 여기서는 override 시켜주면 절대 안됨!
     init(scode: String, sname: String, sdept: String, sphone: String) {
-        // 이걸 mutablearray에 집어 넣음
         self.scode = scode
         self.sname = sname
         self.sdept = sdept
         self.sphone = sphone
+        
     }
     
 }
