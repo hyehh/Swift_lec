@@ -17,7 +17,7 @@ protocol QueryModelProtocol {
 class QueryModel {
     // JsonModel이 JsonModelProtocol을 가지고 있음
     var delegate: QueryModelProtocol!
-    let urlPath = "http://192.168.0.92:8080/ios/student_query_ios.jsp"
+    let urlPath = "http://192.168.0.5:8080/ios/student_query_ios.jsp"
     
     func downloadItems() {
         // URL 타입 생성
@@ -41,7 +41,7 @@ class QueryModel {
     
     // parsing func 만들기
     func parseJSON(_ data: Data) {
-        var jsonResult = NSMutableArray()
+        var jsonResult = NSArray()
         do {
             // swift에서 json 사용하는 방식
             // 변환이 쉬워서 NSArray 사용한 것! (여기서 변환시켜주려고!!!!)
@@ -50,7 +50,7 @@ class QueryModel {
             // 들어온 JSON을 배열로 바꿔줌!
             // NSArray 한 번 데이터가 들어가면 못바꿈! 못지움!
             // NSArray는 [{"code" : "S001", "name" : "aaa"},{}] 이런식으로 들어가있음!
-            jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSMutableArray
+            jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
         } catch let error as NSError {
             print(error)
         }

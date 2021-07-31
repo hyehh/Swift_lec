@@ -11,7 +11,7 @@ import Foundation
 // json으로 데이터 가져올 때만 필요한 게 protocol
 class InsertModel {
     // JsonModel이 JsonModelProtocol을 가지고 있음
-    var urlPath = "http://192.168.0.92:8080/ios/studentInsert_ios.jsp"
+    var urlPath = "http://192.168.0.5:8080/ios/studentInsert_ios.jsp"
     
     func InsertItems(code: String, name: String, dept: String, phone: String) -> Bool { // 데이터를 달고 넘어와서 db 연결해야 함! (parameter 생성해주기!)
         // return은 잘 끝났는지 확인하기 위한 용도

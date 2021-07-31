@@ -9,7 +9,7 @@ import Foundation
 
 class DeleteModel {
     // JsonModel이 JsonModelProtocol을 가지고 있음
-    var urlPath = "http://192.168.0.92:8080/ios/studentDelete_ios.jsp"
+    var urlPath = "http://192.168.0.5:8080/ios/studentDelete_ios.jsp"
     
     func DeleteItems(code: String) -> Bool { // 데이터를 달고 넘어와서 db 연결해야 함! (parameter 생성해주기!)
         // return은 잘 끝났는지 확인하기 위한 용도
